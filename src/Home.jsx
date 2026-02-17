@@ -85,7 +85,7 @@ const Home = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="w-full md:w-1/2 text-center md:text-left space-y-8"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-[#2C3E50]">
+          <h1 className="text-3xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-[#2C3E50]">
             Reconnect with <br />
             <span className="italic text-[#8F9E8B]">your true self.</span>
           </h1>
@@ -160,7 +160,7 @@ const Home = () => {
             <Reveal key={idx} delay={idx * 0.1}>
               <div className="flex flex-col items-center text-center group cursor-pointer">
                 {/* Circular Image Mask */}
-                <div className="w-72 h-72 rounded-full overflow-hidden mb-8 border-8 border-[#FDFCF8] shadow-xl relative">
+                <div className="w-40 h-40 md:w-64 md:h-64 rounded-full overflow-hidden mb-8 border-8 border-[#FDFCF8] shadow-xl relative">
                   <div className="absolute inset-0 bg-[#2C3E50]/20 group-hover:bg-transparent transition duration-500 z-10" />
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
                 </div>
@@ -175,10 +175,10 @@ const Home = () => {
       </section>
 
       {/* --- NEW SECTION: Our Office (Custom Addition) --- */}
-      <section className="bg-[#EBECE8] py-32 px-6 md:px-12">
+      <section className="bg-[#EBECE8] py-20 px-6 md:px-12">
          <div className="max-w-7xl mx-auto">
             <Reveal>
-                <div className="flex flex-col md:flex-row gap-16 items-center">
+                <div className="flex flex-col md:flex-row gap-16 items-center justify-center">
                     {/* Left: Copy */}
                     <div className="w-full md:w-1/3">
                         <h2 className="text-4xl font-serif text-[#2C3E50] mb-6">A Calm Space for Healing.</h2>
@@ -197,7 +197,7 @@ const Home = () => {
                     </div>
                     
                     {/* Right: Images Grid */}
-                    <div className="w-full md:w-2/3 grid grid-cols-2 gap-6">
+                    <div className="w-full md:w-2/3 grid md:grid-cols-1 grid-rows-2 justify-center items-center flex gap-6">
                         <div className="mt-12">
                              <img src={officeImg1} alt="Dr. Maya Reynolds Therapy Office Seating" className="w-full h-[400px] object-cover rounded-t-[100px] shadow-lg border-4 border-white" />
                         </div>
@@ -278,7 +278,7 @@ const Home = () => {
         <div className="w-full md:w-1/2 flex justify-center">
           <Reveal delay={0.2}>
             {/* Arch Image Right */}
-            <div className="relative w-[300px] h-[450px]">
+            <div className="relative min-w-[250px] w-full md:w-[300px] h-[450px]">
               <div className="absolute inset-0 rounded-t-[150px] overflow-hidden border-8 border-white shadow-2xl">
                 <img
                   src={doctorImg}
@@ -287,9 +287,9 @@ const Home = () => {
                 />
               </div>
               {/* Decorative Circle */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg z-10 bg-[#8F9E8B]">
+              <div className="absolute -bottom-5 -right-0 w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg z-10 bg-[#8F9E8B]">
                  {/* Abstract/Texture for decoration */}
-                 <div className="w-full h-full bg-[#8F9E8B] opacity-80 flex items-center justify-center text-white font-serif italic text-2xl">PsyD</div>
+                 <div className="w-full h-full bg-[#8F9E8B] opacity-80 flex items-center justify-center text-white font-serif italic text-2xl"><img src="https://img.freepik.com/premium-vector/vector-design-psychologist-female-icon-style_822882-19166.jpg" alt="" /></div>
               </div>
             </div>
           </Reveal>

@@ -20,14 +20,14 @@ const Contact = () => {
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
 
                     {/* Left Content */}
-                    <div className="w-full md:w-1/2 space-y-8">
+                    <div className="w-full md:w-1/2 space-y-8 flex justify-center">
                         <Reveal>
-                            <h1 className="text-6xl md:text-7xl font-serif text-[#2C3E50]">Let's Connect</h1>
+                            <h1 className="text-4xl md:text-7xl font-serif text-[#2C3E50]">Let's Connect</h1>
                             <p className="text-xl italic font-serif text-[#5A6B7C]">Take the first step towards clarity.</p>
                             <p className="text-sm uppercase tracking-widest opacity-70 text-[#2C3E50]">Get in touch for a free 15-minute phone consultation.</p>
 
-                            <div className="relative mt-12 w-full max-w-md">
-                                <div className="w-[300px] h-[400px] rounded-t-[150px] overflow-hidden border-4 border-white shadow-xl">
+                            <div className="relative mt-12 w-full max-w-md flex justify-center">
+                                <div className="md:w-[300px] min-w-[200px] h-[400px] rounded-t-[150px] overflow-hidden border-4 border-white shadow-xl">
                                     {/* Updated with a working Unsplash Image */}
                                     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop" className="w-full h-full object-cover" alt="Santa Monica Beach" />
                                 </div>
@@ -58,7 +58,7 @@ const Contact = () => {
                     </p>
                     {/* Widget Placeholder */}
                     <div className="max-w-md mx-auto bg-white p-12 border border-[#EBECE8] shadow-sm">
-                        <p className="text-center font-bold text-gray-400 tracking-widest">SIMPLEPRACTICE WIDGET</p>
+                        <p className="text-center font-bold text-gray-400 tracking-widest">SIMPLE PRACTICE WIDGET</p>
                         <div className="mt-4 flex justify-center">
                             <button className="bg-[#2C3E50] text-white px-6 py-2 text-xs uppercase hover:bg-[#8F9E8B] transition">Go to Portal</button>
                         </div>
@@ -84,7 +84,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <p>(310) 555-0123</p>
-                                <p>contact@drmayareynolds.com</p>
+                                <p className='overflow-x-scroll'>contact@drmayareynolds.com</p>
                             </div>
                         </div>
                     </Reveal>

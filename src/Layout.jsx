@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Menu } from 'lucide-react'; // Import icons
 
 const Layout = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === '/';
+
+  // Helper to close menu
+  const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <div className="bg-[#FDFCF8] text-[#2C3E50] font-sans selection:bg-[#D6CFC7] min-h-screen flex flex-col">
@@ -11,13 +16,93 @@ const Layout = () => {
       {/* --- Navigation --- */}
       <nav className="flex justify-between items-center px-6 md:px-12 py-6 sticky top-0 bg-[#FDFCF8]/95 backdrop-blur-md z-50 border-b border-[#2C3E50]/5">
         <Link to="/" className="text-2xl font-serif font-semibold tracking-tight text-[#2C3E50]">Dr. Maya Reynolds, PsyD</Link>
+        
+        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 uppercase text-xs tracking-[0.15em] font-medium text-[#5A6B7C]">
           <Link to="/" className="hover:text-[#8F9E8B] transition duration-300">Home</Link>
           <Link to="/blog" className="hover:text-[#8F9E8B] transition duration-300">Insights</Link>
           <Link to="/contact" className="hover:text-[#8F9E8B] transition duration-300">Contact</Link>
         </div>
-        <button className="md:hidden text-[#2C3E50]">Menu</button>
+
+        {/* Mobile Menu Button (Hamburger) */}
+        <button 
+          className="md:hidden text-[#2C3E50] hover:text-[#8F9E8B] transition"
+          onClick={() => setIsMobileMenuOpen(true)}
+        >
+          <Menu size={28} />
+        </button>
       </nav>
+
+      {/* --- Mobile Side Menu (Slide-in) --- */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* 1. Backdrop Overlay (Blurry Background) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeMenu} // Close when clicking the blurred background
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
+            />
+
+            {/* 2. Side Menu Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#FDFCF8] shadow-2xl z-[70] p-8 flex flex-col border-l border-[#2C3E50]/10"
+            >
+              {/* Close Button (Top Right) */}
+              <div className="flex justify-end mb-12">
+                <button 
+                  onClick={closeMenu}
+                  className="p-2 rounded-full hover:bg-[#EBECE8] transition text-[#2C3E50]"
+                >
+                  <X size={32} />
+                </button>
+              </div>
+
+              {/* Mobile Links */}
+              <div className="flex flex-col space-y-8">
+                <Link 
+                  to="/" 
+                  onClick={closeMenu} 
+                  className="text-3xl font-serif text-[#2C3E50] hover:text-[#8F9E8B] transition"
+                >
+                  Home
+                </Link>
+                <Link 
+                  to="/blog" 
+                  onClick={closeMenu} 
+                  className="text-3xl font-serif text-[#2C3E50] hover:text-[#8F9E8B] transition"
+                >
+                  Insights
+                </Link>
+                <Link 
+                  to="/contact" 
+                  onClick={closeMenu} 
+                  className="text-3xl font-serif text-[#2C3E50] hover:text-[#8F9E8B] transition"
+                >
+                  Contact
+                </Link>
+              </div>
+
+              {/* Extra Info at bottom of menu */}
+              <div className="mt-auto pt-10 border-t border-[#2C3E50]/10">
+                <button className="w-full bg-[#2C3E50] text-white py-4 uppercase text-xs tracking-widest hover:bg-[#8F9E8B] transition mb-6">
+                    Client Portal
+                </button>
+                <div className="text-sm opacity-60 text-[#5A6B7C]">
+                    <p>Santa Monica, CA</p>
+                    <p>contact@drmayareynolds.com</p>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* --- Dynamic Page Content --- */}
       <main className="flex-grow">

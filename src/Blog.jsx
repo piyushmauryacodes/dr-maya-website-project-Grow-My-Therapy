@@ -60,14 +60,14 @@ const Blog = () => {
   return (
     <div className="pt-10 bg-[#FDFCF8] relative min-h-screen">
       {/* --- Blog Header --- */}
-      <section className="px-6 md:px-12 max-w-7xl mx-auto mb-32">
+      <section className=" px-4 md:px-6 md:px-12 max-w-7xl mx-auto mb-32">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left Arch Image */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}
-            className="w-full md:w-1/2 relative"
+            className="w-full md:w-1/2 relative flex justify-center"
           >
-             <div className="w-[300px] h-[400px] md:w-[400px] md:h-[500px] rounded-t-[200px] overflow-hidden shadow-2xl border-4 border-white">
+             <div className="w-[300px] h-[400px] md:w-[400px] md:h-[500px] rounded-t-[200px] overflow-hidden shadow-2xl border-4 border-white flex justify-center items-center">
                 <img src="https://images.unsplash.com/photo-1693122078320-5849c9343d31?q=80&w=685&auto=format&fit=crop" alt="Journaling" className="w-full h-full object-cover"/>
              </div>
           </motion.div>
